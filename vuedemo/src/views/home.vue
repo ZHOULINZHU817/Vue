@@ -2,11 +2,11 @@
 <template>
     <div>
         <ul>
-            <li v-for="todo in todos">
+            <li v-for="todo in todos" v-if="seen">
                 {{ todo.text }}
             </li>
         </ul>
-        <button @click="eClick()">事件</button>
+        <button v-on:click="eClick">事件</button>
     </div>
 </template>
 
@@ -19,12 +19,13 @@ export default {
           { text: 'Learn JavaScript' },
           { text: 'Learn Vue' },
           { text: 'Build something awesome' }
-        ]
+        ],
+       seen : true
     }
   },
   methods:{
-    eClick(){
-        console.log(9999);
+    eClick:function(){
+        this.seen = !this.seen;
     }
   }
 }
